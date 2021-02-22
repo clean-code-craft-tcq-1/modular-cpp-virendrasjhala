@@ -1,31 +1,25 @@
-#include "cableColorInterface.h"
-
-void testNumberToPair(int pairNumber, TelCoColorCoder::MajorColor expectedMajor, TelCoColorCoder::MinorColor expectedMinor)
+#include "cableColorPlugins.h"
+#include <assert.h>
+#include <iostream>
+void testNumberToPair(int colorCablePairNumber, TelecommunicationCableColorCoder::MajorColorCables expectedMajorColorCable, TelecommunicationCableColorCoder::MinorColorCables expectedMinorColorCable)
 {
-	TelCoColorCoder::ColorPair colorPair = TelCoColorCoder::GetColorFromPairNumber(pairNumber);
-	std::cout << "Got pair " << colorPair.ToString() << std::endl;
-
-	//std::cout << "Got pair " << news::MajorColorNames[colorPair.getMajor()] << " " << news::MinorColorNames[colorPair.getMinor()] << std::endl;
-	assert(colorPair.getMajor() == expectedMajor);
-	assert(colorPair.getMinor() == expectedMinor);
+	TelecommunicationCableColorCoder::CableColors colorCablePairContainer = TelecommunicationCableColorCoder::fetchColorpairFromColorPairNumber(colorCablePairNumber);
+	std::cout << "Got pair " << colorCablePairContainer.ToString()<< std::endl;
+	assert(colorCablePairContainer.getMajorColorCables() == expectedMajorColorCable);
+	assert(colorCablePairContainer.getMinorColorCables() == expectedMinorColorCable);
 }
-
-void testPairToNumber(
-	TelCoColorCoder::MajorColor major,
-	TelCoColorCoder::MinorColor minor,
-	int expectedPairNumber)
+void testPairToNumber(TelecommunicationCableColorCoder::MajorColorCables majorColorCable, TelecommunicationCableColorCoder::MinorColorCables minorColorCable, int expectedColorCablePairNumber)
 {
-	int pairNumber = TelCoColorCoder::GetPairNumberFromColor(major, minor);
-	std::cout << "Got pair number " << pairNumber << std::endl;
-	assert(pairNumber == expectedPairNumber);
+	int fetchedColorCablePairNumber = TelecommunicationCableColorCoder::fetchColorPairNumberFromColorPair(majorColorCable, minorColorCable);
+	std::cout << "Got pair number " << fetchedColorCablePairNumber << std::endl;
+	assert(fetchedColorCablePairNumber == expectedColorCablePairNumber);
 }
-
 int main() {
-	testNumberToPair(4, TelCoColorCoder::WHITE, TelCoColorCoder::BROWN);
-	testNumberToPair(5, TelCoColorCoder::WHITE, TelCoColorCoder::SLATE);
+	testNumberToPair(4, TelecommunicationCableColorCoder::WHITE, TelecommunicationCableColorCoder::BROWN);
+	testNumberToPair(5, TelecommunicationCableColorCoder::WHITE, TelecommunicationCableColorCoder::SLATE);
 
-	testPairToNumber(TelCoColorCoder::BLACK, TelCoColorCoder::ORANGE, 12);
-	testPairToNumber(TelCoColorCoder::VIOLET, TelCoColorCoder::SLATE, 25);
+	testPairToNumber(TelecommunicationCableColorCoder::BLACK, TelecommunicationCableColorCoder::ORANGE, 12);
+	testPairToNumber(TelecommunicationCableColorCoder::VIOLET, TelecommunicationCableColorCoder::SLATE, 25);
 	system("pause");
 	return 0;
 }
