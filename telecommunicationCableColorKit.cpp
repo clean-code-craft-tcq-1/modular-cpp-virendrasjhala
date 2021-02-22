@@ -4,7 +4,8 @@
 void testNumberToPair(int colorCablePairNumber, TelecommunicationCableColorCoder::MajorColorCables expectedMajorColorCable, TelecommunicationCableColorCoder::MinorColorCables expectedMinorColorCable)
 {
 	TelecommunicationCableColorCoder::CableColors colorCablePairContainer = TelecommunicationCableColorCoder::fetchColorpairFromColorPairNumber(colorCablePairNumber);
-	std::cout << "Got pair " << colorCablePairContainer.ToString()<< std::endl;
+	//std::cout << "Got pair " << colorCablePairContainer.ToString()<< std::endl;
+	std::cout << "Got pair " << TelecommunicationCableColorCoder::MajorColorCablesNames[colorCablePairContainer.getMajorColorCables()] << " " << TelecommunicationCableColorCoder::MinorColorCablesNames[colorCablePairContainer.getMinorColorCables()] << std::endl;
 	assert(colorCablePairContainer.getMajorColorCables() == expectedMajorColorCable);
 	assert(colorCablePairContainer.getMinorColorCables() == expectedMinorColorCable);
 }
