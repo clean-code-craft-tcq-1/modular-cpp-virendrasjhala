@@ -9,7 +9,6 @@ std::string CableColors::ToString() {
 	cableVolume += MinorColorCablesNames[cableColorAccess.getMinorColorCables()];
 	return cableVolume;
 }
-
 CableColors TelecommunicationCableColorCoder::fetchColorpairFromColorPairNumber(int colorCablePairNumber) {
 	/*fetch cable color pair from cable color code*/
 	int zeroBasedPairNumber = colorCablePairNumber - 1;
