@@ -7,11 +7,8 @@
 void testNumberToColorCablePair(int colorCablePairNumber, TelecommunicationCableColorCoder::MajorColorCables expectedMajorColorCable, TelecommunicationCableColorCoder::MinorColorCables expectedMinorColorCable, std::map<std::string, int>& manual){
 	/*test if the inserted number maches to the color cable code or not*/
 	TelecommunicationCableColorCoder::CableColors colorCablePairContainer = TelecommunicationCableColorCoder::fetchColorpairFromColorPairNumber(colorCablePairNumber);
-	std::string colorOne = (std::string)TelecommunicationCableColorCoder::MajorColorCablesNames[colorCablePairContainer.getMajorColorCables()];
-	std::string colorTwo = colorOne +" "+ (std::string)TelecommunicationCableColorCoder::MinorColorCablesNames[colorCablePairContainer.getMinorColorCables()];
-	manual.insert(std::pair<std::string, int> (colorTwo.data(), colorCablePairNumber));
-	//std::cout <<colorCablePairContainer.ToString()<< std::endl;
-	std::cout<< TelecommunicationCableColorCoder::MajorColorCablesNames[colorCablePairContainer.getMajorColorCables()] << " " << TelecommunicationCableColorCoder::MinorColorCablesNames[colorCablePairContainer.getMinorColorCables()] << " ";
+	manual.insert(std::pair<std::string, int> (colorCablePairContainer.ToString().data(), colorCablePairNumber));
+	std::cout <<colorCablePairContainer.ToString().data()<< " ";
 	assert(colorCablePairContainer.getMajorColorCables() == expectedMajorColorCable);
 	assert(colorCablePairContainer.getMinorColorCables() == expectedMinorColorCable);
 }
@@ -34,8 +31,7 @@ int main() {
 		for (auto MinorCableIter = 0; MinorCableIter < Minorcablepair.size(); MinorCableIter++)
 		{
 			++count;
-			testNumberToColorCablePair(count, Majorcablepair[MAjorCableIter], Minorcablepair[MinorCableIter],manual);
-			
+			testNumberToColorCablePair(count, Majorcablepair[MAjorCableIter], Minorcablepair[MinorCableIter],manual);	
 			testColorCablePairToNumber(Majorcablepair[MAjorCableIter], Minorcablepair[MinorCableIter], count);
 		}
 	}
@@ -44,6 +40,5 @@ int main() {
 	//std::cin >> colorCode;
 	colorCode = 0;
 	if(colorCode!=0){ TelecommunicationCableColorCoder::checkColorPair(manual, colorCode); }
-	system("pause");
 	return 0;
 }

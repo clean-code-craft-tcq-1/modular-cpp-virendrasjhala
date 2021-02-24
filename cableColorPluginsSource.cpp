@@ -4,9 +4,9 @@ using namespace TelecommunicationCableColorCoder;
 
 std::string CableColors::ToString() {
 	TelecommunicationCableColorCoder::CableColors cableColorAccess;
-	std::string cableVolume = MajorColorCablesNames[cableColorAccess.getMinorColorCables()];
+	std::string cableVolume = TelecommunicationCableColorCoder::MajorColorCablesNames[majorColor];
 	cableVolume += " ";
-	cableVolume += MinorColorCablesNames[cableColorAccess.getMinorColorCables()];
+	cableVolume += TelecommunicationCableColorCoder::MinorColorCablesNames[minorColor];
 	return cableVolume;
 }
 
