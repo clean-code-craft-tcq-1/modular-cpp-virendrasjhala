@@ -38,5 +38,6 @@ namespace TelecommunicationCableColorCoder
 	};
 	CableColors fetchColorpairFromColorPairNumber(int pairNumber);
 	int fetchColorPairNumberFromColorPair(MajorColorCables major, MinorColorCables minor);
-	std::string checkColorPair(std::map<std::string, int> manual , int colorCode);
+	void printUserManualForColorCablePair(int colorCablePairNumber, MajorColorCables expectedMajorColorCable, MinorColorCables expectedMinorColorCable, std::map<std::string, int>& manual);
+	std::string checkColorPair(std::map<std::string, int> manual, int colorCode);
 }

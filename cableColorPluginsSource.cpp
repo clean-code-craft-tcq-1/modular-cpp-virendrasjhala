@@ -21,6 +21,13 @@ int TelecommunicationCableColorCoder::fetchColorPairNumberFromColorPair(MajorCol
 	/*fetch cable color code from cable color pair*/
 	return majorColorCable * numberOfMinorColorCables + minorColorCable + 1;
 }
+
+void TelecommunicationCableColorCoder::printUserManualForColorCablePair(int colorCablePairNumber, TelecommunicationCableColorCoder::MajorColorCables expectedMajorColorCable, TelecommunicationCableColorCoder::MinorColorCables expectedMinorColorCable, std::map<std::string, int>& manual) {
+	TelecommunicationCableColorCoder::CableColors colorCablePairContainerFormanual = TelecommunicationCableColorCoder::fetchColorpairFromColorPairNumber(colorCablePairNumber);
+	manual.insert(std::pair<std::string, int>(colorCablePairContainerFormanual.ToString().data(), colorCablePairNumber));
+	std::cout<< colorCablePairContainerFormanual.ToString().data() << " "<< colorCablePairNumber <<std::endl;
+}
+
 std::string TelecommunicationCableColorCoder::checkColorPair(std::map<std::string, int> manual , int colorCode)
 {
 	std::map< std::string, int>::iterator iter;
