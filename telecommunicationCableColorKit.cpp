@@ -39,6 +39,6 @@ int main() {
 	std::cout << "Enter number to check the color pair : ";
 	//std::cin >> colorCode;
 	colorCode = 0;
-	if(colorCode!=0){ TelecommunicationCableColorCoder::checkColorPair(manual, colorCode); }
+	if(colorCode!=0){ std::cout<<TelecommunicationCableColorCoder::checkColorPair(manual, colorCode).data()<<std::endl; }
 	return 0;
 }
